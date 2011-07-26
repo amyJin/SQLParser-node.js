@@ -1,0 +1,19 @@
+This is an extended project of the repository SQLParser. 
+
+Based on the article http://syskall.com/how-to-write-your-own-native-nodejs-extension, I wrapped SQLParser class by V8 to make it 
+executable in node.js projects to check the validation of SQL query. 
+
+Bulding:
+In the top directory, run the following command:
+node-waf configure && node-waf build
+
+Then we should have our compiled extension in ./build/default/SQLParser.node. 
+
+Test it in node console:
+
+$ node
+> var parser = require('./build/default/SQLParser.node');
+> var sqlParser = new parser.SQLParser();
+> var query = 'SELECT * FROM Users';    	
+> sqlParser.parse(query);
+true
